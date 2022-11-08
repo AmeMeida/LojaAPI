@@ -1,4 +1,4 @@
-package repository;
+package com.loja.api.repository;
 
 import java.util.List;
 

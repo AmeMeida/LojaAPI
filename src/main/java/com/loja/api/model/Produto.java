@@ -10,24 +10,33 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "LojaProduto")
 public class Produto {
+    // Fields
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
-    @Column(nullable = false)
-    private String nome;
+    @Column(nullable = false, length = 350)
+    private String descricao;
 
     @Column(nullable = false)
-    private String email;
+    private String marca;
 
+    @Column(nullable = false)
+    private double preco;
+
+
+    // Constructors
+    public Produto(String descricao, String marca, double preco) {
+        setDescricao(descricao);
+        setMarca(marca);
+        setPreco(preco);
+    }
+    
     public Produto() { }
 
-    public Produto(String nome, String email) {
-        this.nome = nome;
-        this.email = email;
-    }
 
+    // Getters and Setters
     public int getCodigo() {
         return codigo;
     }
@@ -36,21 +45,27 @@ public class Produto {
         this.codigo = codigo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 }
