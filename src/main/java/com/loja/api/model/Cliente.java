@@ -24,31 +24,40 @@ public class Cliente {
     public Cliente() { }
 
     public Cliente(String nome, String email) {
-        this.nome = nome;
-        this.email = email;
+        setNome(nome);
+        setEmail(email);
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public final void setCodigo(int codigo) {
+        if (codigo >= 0)
+            this.codigo = codigo;
+        else
+            throw new IllegalArgumentException("O código deve ser maior ou igual a zero.");
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public final void setNome(String nome) {
+        if (nome != null && nome.trim().length() >= 3 && nome.trim().length() <= 255)
+            this.nome = nome.trim();
+        else
+            throw new IllegalArgumentException("O nome inserido é inválido.");
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public final void setEmail(String email) {
+        if (email != null && email.trim().matches("^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$"))
+            this.email = email.trim();
+        else
+            throw new IllegalArgumentException("O email inserido é inválido.");
     }
 }

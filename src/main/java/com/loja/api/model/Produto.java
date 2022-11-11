@@ -41,24 +41,33 @@ public class Produto {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public final void setCodigo(int codigo) {
+        if (codigo >= 0)
+            this.codigo = codigo;
+        else
+            throw new IllegalArgumentException("O código deve ser maior ou igual a zero.");
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public final void setDescricao(String descricao) {
+        if (descricao != null && descricao.length() >= 3 && descricao.length() <= 350)
+            this.descricao = descricao.trim();
+        else
+            throw new IllegalArgumentException("A descrição não deve estar vazia e deve conter no máximo 350 caracteres.");
     }
 
     public String getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public final void setMarca(String marca) {
+        if (marca != null && !marca.trim().isEmpty())
+            this.marca = marca.trim();
+        else
+            throw new IllegalArgumentException("A marca não deve estar vazia.");
     }
 
     public double getPreco() {
@@ -66,6 +75,9 @@ public class Produto {
     }
 
     public void setPreco(double preco) {
-        this.preco = preco;
+        if (preco > 0)
+            this.preco = preco;
+        else
+            throw new IllegalArgumentException("O preço deve ser maior que zero.");
     }
 }
