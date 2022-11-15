@@ -33,6 +33,7 @@ public class ProdutoControl implements IControl<Produto, Integer> {
         return repo.findAll();
     }
 
+    // probably WORKS
     public void update(Produto prod) {
         repo.save(prod);
     }
@@ -99,13 +100,15 @@ public class ProdutoControl implements IControl<Produto, Integer> {
         return repo.findByPrecoLT(preco);
     }
 
+    // WORKS
     @GetMapping("/busca/descricao_contem/{descricao}/marca_contem/{marca}")
     public List<Produto> findByDescContainsAndMarcaContains(@PathVariable(value = "descricao") String descricao, @PathVariable(value = "marca") String marca) {
         return repo.findByDescContainsAndMarcaContains(descricao.toLowerCase(), marca.toLowerCase());
     }
 
+    // WORKS
     @GetMapping("/busca/descricao_contem/{descricao}/preco_menor_que/{preco}")
-    public List<Produto> findByDescContainsAndPrecoLT(String descricao, double preco) {
+    public List<Produto> findByDescContainsAndPrecoLT(@PathVariable(value = "descricao") String descricao, @PathVariable(value = "preco") double preco) {
         return repo.findByDescContainsAndPrecoLT(descricao.toLowerCase(), preco);
     }
 }

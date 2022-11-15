@@ -9,7 +9,9 @@ import com.loja.api.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
     public List<Produto> findByDescricao(String descricao);
+
     public List<Produto> findByMarca(String marca);
+    
     public List<Produto> findByPreco(double preco);
 
     @Query("SELECT prod FROM Produto prod WHERE LOWER(prod.descricao) LIKE ?1%")

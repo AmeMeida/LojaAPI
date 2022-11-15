@@ -9,6 +9,7 @@ import com.loja.api.model.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     public List<Cliente> findByNome(String nome);
+    
     public List<Cliente> findByEmail(String email);
 
     @Query("SELECT cli FROM Cliente cli WHERE LOWER(cli.nome) LIKE ?1%")

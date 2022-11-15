@@ -15,7 +15,7 @@ public interface IControl<T, ID> {
     @GetMapping("/hello")
     public String sayHi();
 
-    @GetMapping("/todos")
+    @GetMapping("/busca/todos")
     public List<T> findAll();
 
     @GetMapping("/busca/{id}")
