@@ -33,7 +33,7 @@ public class ProdutoControl implements IControl<Produto, Integer> {
         return repo.findAll();
     }
 
-    // probably WORKS
+    // WORKS
     public void update(Produto prod) {
         repo.save(prod);
     }
