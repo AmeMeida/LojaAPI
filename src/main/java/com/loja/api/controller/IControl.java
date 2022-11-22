@@ -32,6 +32,9 @@ public interface IControl<T, ID> {
     @DeleteMapping("/remover")
     public void delete(@RequestBody T entity);
 
+    @DeleteMapping("/remover/{id}")
+    public void deleteByID(@PathVariable(value = "id") ID id);
+
     @DeleteMapping("/remover_varios")
     public void deleteAll(@RequestBody Iterable<T> entities);
 
